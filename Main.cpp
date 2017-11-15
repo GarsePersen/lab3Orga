@@ -6,6 +6,8 @@
 using namespace std;
 
 #include "Archivo.hpp"
+#include "Cache.hpp"
+
 
 int main(int argc, char **argv){
 	Archivo archivo;
@@ -42,11 +44,9 @@ int main(int argc, char **argv){
 	cout << "Ingrese el nombre del archivo con los datos a consultar: ";
 	cin >> nombreArchivoEntrada;
 	
-	datosConsulta = archivo.archivoEntrada(nombreArchivoEntrada);
 	
-	for(auto it = datosConsulta.begin(); it != datosConsulta.end(); it++){
-        	cout<< *it << endl;  
-	}	
-
+	datosConsulta = archivo.archivoEntrada(nombreArchivoEntrada);
+	Cache cache(bloques, vias, palabras, politicaReemplazo, datosConsulta.size());	
+	
 	return 0;
 }

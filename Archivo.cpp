@@ -15,7 +15,6 @@ vector<int> Archivo::archivoEntrada(string nombre){
     string::iterator it;
     vector<int> datosConsulta;
     ifstream archivo (nombre);
-    
     if(!archivo.good()){
 	throw logic_error("El archivo con los datos a consultar no existe.\n");
 	return datosConsulta;
