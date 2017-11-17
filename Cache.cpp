@@ -9,60 +9,68 @@ using namespace std;
 Cache::Cache(int bloques, int vias, int palabras, char* politicaReemplazo, int cantidadDatosIngresar){
     Datos datos;
     this->politicaReemplazo = politicaReemplazo;
-    int cantidadColumnas = palabras*bloques+2;
+    this->cantidadColumnas = palabras*bloques+2;
     vector<vector<Datos>> matriz(cantidadDatosIngresar+3, vector<Datos>(cantidadColumnas));
     this->datosCache = matriz;
-    int auxVias = 0;
-    int auxBloques = 0;
-    int auxPalabras = 0;
-	cout << cantidadColumnas-2 << endl;
-	cout << bloques << endl;
-	cout << vias << endl;
-	cout << ((bloques)/(vias)) << endl;
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < cantidadColumnas-2; j++){
-            switch(i){
-                case 0:
-		    if(j<bloques){
-			    if(j%(vias) == 0 ){
-				    datosCache[i][j].auxiliar = "s"+to_string(auxVias);
-				    auxVias++;
-			    } else {
-				    datosCache[i][j].auxiliar = ";";
+    this->bloques = bloques;
+    this->vias = vias;
+    this->palabras = palabras;
+    this->cantidadDatosIngresar = cantidadDatosIngresar;
+    inicializarCache();
+    imprimirCache();   
+}
 
-			    }	
-
-		    }	
-		    break;
-                case 1:
-                    if(j%(cantidadColumnas-2)/bloques == 0){
-                        datosCache[i][j].auxiliar = "b" + to_string(auxBloques);
-                        auxBloques = 0;
-                    } else {
-                        auxBloques++;
-                        datosCache[i][j].auxiliar = "  ";
-                    }
-                    break;
-                case 2:
-                    if(j%palabras == 0){
-                        auxPalabras = 0;
-                        datosCache[i][j].auxiliar = "w"+to_string(auxPalabras);
-                    } else {
-                        auxPalabras++;
-			datosCache[i][j].auxiliar = "w"+to_string(auxPalabras);	
-		    }
-		    break;
-		default:
-		    break;
-	    }
-	}
-    }
-    for(int i = 0; i < cantidadDatosIngresar+3; i++){
-        for(int j = 0; j < cantidadColumnas; j++){
-            cout << datosCache[i][j].auxiliar << " ";
+void Cache::imprimirCache(){
+    for(int i = 0; i < this->cantidadDatosIngresar+3; i++){
+        for(int j = 0; j < this->cantidadColumnas; j++){
+            cout << this->datosCache[i][j].auxiliar << " ";
         }
         cout << "\n";
     }
 }
 
+void Cache::inicializarCache(){
+    int auxVias = 0;
+    int auxBloques = 0;
+    int auxPalabras = 0;
+
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < this->cantidadColumnas-2; j++){
+            switch(i){
+                case 0:
+                    if(j<this->bloques){
+                        if(j%(this->vias) == 0 ){
+                            this->datosCache[i][j].auxiliar = "s"+to_string(auxVias);
+                            auxVias++;
+                        } else {
+                            this->datosCache[i][j].auxiliar = ";";
+
+                        }	
+
+                    }	
+                    break;
+                case 1:
+                    if(j%(this->cantidadColumnas-2)/this->bloques == 0){
+                        this->datosCache[i][j].auxiliar = "b" + to_string(auxBloques);
+                        auxBloques = 0;
+                    } else {
+                        auxBloques++;
+                        this->datosCache[i][j].auxiliar = "  ";
+                    }
+                    break;
+                case 2:
+                    if(j%this->palabras == 0){
+                        auxPalabras = 0;
+                        this->datosCache[i][j].auxiliar = "w"+to_string(auxPalabras);
+                    } else {
+                        auxPalabras++;
+                        this->datosCache[i][j].auxiliar = "w"+to_string(auxPalabras);	
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
 

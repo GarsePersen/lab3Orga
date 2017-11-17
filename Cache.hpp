@@ -10,6 +10,13 @@ using namespace std;
 class Cache{
     private:
         string politicaReemplazo;
+        int bloques;
+        int vias;
+        int palabras;
+        int cantidadColumnas;
+        int cantidadDatosIngresar;
+        void inicializarCache();
+        void imprimirCache();
     public:
         Cache(int bloques, int vias, int palabras, char* politicaReemplazo, int cantidadDatosIngresar);
         vector<vector<Datos>> datosCache;
