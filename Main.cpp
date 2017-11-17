@@ -1,13 +1,13 @@
-#include <iostream>
+#define _GLIBCXX_USE_CXX11_ABI 0
+
 #include <unistd.h>
+#include <iostream>
 #include <string>
 #include <vector>
-
 using namespace std;
 
 #include "Archivo.hpp"
 #include "Cache.hpp"
-
 
 int main(int argc, char **argv){
     Archivo archivo;

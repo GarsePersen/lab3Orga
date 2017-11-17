@@ -11,7 +11,7 @@ class Cache{
     private:
         string politicaReemplazo;
     public:
-        Cache(int bloques, int vias, int palabras, string politicaReemplazo, int cantidadDatosIngresar);
+        Cache(int bloques, int vias, int palabras, char* politicaReemplazo, int cantidadDatosIngresar);
         vector<vector<Datos>> datosCache;
 
 };
