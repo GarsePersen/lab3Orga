@@ -4,15 +4,16 @@
 #include <string>
 #include <vector>
 using namespace std;
+#include "Datos.hpp"
 
 /* Clase Archivo, se encarga de leer y escribir los archivos necesarios */
 class Cache{
     private:
-	string politicaReemplazo;
+        string politicaReemplazo;
     public:
-	Cache(int bloques, int vias, int palabras, string politicaReemplazo, int cantidadDatosIngresar);
-	vector<vector<string>> datosCache;
-	
+        Cache(int bloques, int vias, int palabras, string politicaReemplazo, int cantidadDatosIngresar);
+        vector<vector<Datos>> datosCache;
+
 };
 
 #endif

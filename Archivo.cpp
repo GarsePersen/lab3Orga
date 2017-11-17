@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
+#include <stdexcept>
 #include <fstream>
 #include <vector>
-#include "Archivo.hpp"
 using namespace std;
+#include "Archivo.hpp"
 
 
 /* Funcion que obtiene un vector de enteros desde el archivo de entrada
@@ -16,17 +17,17 @@ vector<int> Archivo::archivoEntrada(string nombre){
     vector<int> datosConsulta;
     ifstream archivo (nombre);
     if(!archivo.good()){
-	throw logic_error("El archivo con los datos a consultar no existe.\n");
-	return datosConsulta;
+        throw logic_error("El archivo con los datos a consultar no existe.\n");
+        return datosConsulta;
     }
     if (archivo.is_open()){
         while ( getline (archivo, linea)){
-		datosConsulta.push_back(atoi(linea.c_str()));
+            datosConsulta.push_back(atoi(linea.c_str()));
         }
-       	archivo.close();
+        archivo.close();
     }else{
         throw logic_error("Error al abrir el archivo.");
-	return datosConsulta;
+        return datosConsulta;
     }
     return datosConsulta;
 }
