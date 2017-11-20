@@ -11,7 +11,7 @@ using namespace std;
 
 int main(int argc, char **argv){
     Archivo archivo;
-    char *politicaReemplazo;
+    string politicaReemplazo;
     int vias = -1;
     int palabras = -1;
     int bloques = -1;
@@ -44,9 +44,13 @@ int main(int argc, char **argv){
     cout << "Ingrese el nombre del archivo con los datos a consultar: ";
     cin >> nombreArchivoEntrada;
 
+    datosConsulta = archivo.archivoEntrada(nombreArchivoEntrada.c_str());
+    Cache cache(bloques, vias, palabras, politicaReemplazo.c_str(), datosConsulta.size());	
+    for(unsigned int i = 0; i<datosConsulta.size(); i++){
+    	cache.ingresarDirecciones(datosConsulta[i]);
+        cache.imprimirCache();
 
-    datosConsulta = archivo.archivoEntrada(nombreArchivoEntrada);
-    Cache cache(bloques, vias, palabras, politicaReemplazo, datosConsulta.size());	
-
+    }
+    cache.imprimirCache();   
     return 0;
 }

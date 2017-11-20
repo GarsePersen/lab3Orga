@@ -11,7 +11,7 @@ using namespace std;
  * Entrada: String nombre
  * Salida: vector<int>
  * */
-vector<int> Archivo::archivoEntrada(string nombre){
+vector<int> Archivo::archivoEntrada(const char *nombre){
     string linea;
     string::iterator it;
     vector<int> datosConsulta;

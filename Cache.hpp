@@ -9,17 +9,26 @@ using namespace std;
 /* Clase Archivo, se encarga de leer y escribir los archivos necesarios */
 class Cache{
     private:
-        string politicaReemplazo;
+        const char *politicaReemplazo;
         int bloques;
         int vias;
         int palabras;
         int cantidadColumnas;
         int cantidadDatosIngresar;
         void inicializarCache();
-        void imprimirCache();
+	int calcularPalabra(int direccion);
+    	int posicion;
+	int calcularConjunto(int direccion);
+	bool comprobarHit(int direccion);
+	int hit;
+	int calcularMenorAntiguedad(int s);
+	int calcularMayorAntiguedad(int s);
+	int miss;
     public:
-        Cache(int bloques, int vias, int palabras, char* politicaReemplazo, int cantidadDatosIngresar);
-        vector<vector<Datos>> datosCache;
+        Cache(int bloques, int vias, int palabras, const char* politicaReemplazo, int cantidadDatosIngresar);
+        vector<vector<vector<Datos>>> datosCache;
+        void imprimirCache();
+	void ingresarDirecciones(int direccion);
 
 };
 
