@@ -7,6 +7,22 @@ using namespace std;
 #include "Archivo.hpp"
 
 
+
+void Archivo::archivoSalida(const char *nombre, const char *nombre2, float tasaHit, float tasaMiss, const char *traza){
+    ofstream archivo;
+    ofstream archivo2;
+    archivo.open(nombre);
+    archivo2.open(nombre2);
+    archivo << traza;
+    archivo2 << "La tasa de hit es de: " << tasaHit << "%\n";
+    archivo2 << "La tasa de miss es de: " << tasaMiss << "%\n";
+
+    archivo.close();
+    archivo2.close();
+       
+}
+
+
 /* Funcion que obtiene un vector de enteros desde el archivo de entrada
  * Entrada: String nombre
  * Salida: vector<int>

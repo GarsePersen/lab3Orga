@@ -9,6 +9,7 @@ using namespace std;
 class Archivo{
     public:
         vector<int> archivoEntrada(const char *nombre);
+        void archivoSalida(const char *nombre, const char *nombre2, float tasaHit, float tasaMiss, const char *traza);
 };
 
 #endif

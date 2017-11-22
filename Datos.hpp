@@ -8,9 +8,7 @@ using namespace std;
 class Datos{
     public:
         int antiguedad;
-        int dirActual;
-	string auxiliar;
-	vector<int> direcciones;
+        vector<int> direcciones;
 };
 
 #endif

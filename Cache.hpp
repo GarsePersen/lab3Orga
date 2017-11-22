@@ -14,21 +14,21 @@ class Cache{
         int vias;
         int palabras;
         int cantidadColumnas;
-        int cantidadDatosIngresar;
         void inicializarCache();
-	int calcularPalabra(int direccion);
-    	int posicion;
-	int calcularConjunto(int direccion);
-	bool comprobarHit(int direccion);
-	int hit;
-	int calcularMenorAntiguedad(int s);
-	int calcularMayorAntiguedad(int s);
-	int miss;
+        int calcularPalabra(int direccion);
+        int posicion;
+        int calcularConjunto(int direccion);
+        bool comprobarHit(int direccion);
+        int calcularMenorAntiguedad(int s);
+        int calcularMayorAntiguedad(int s);
     public:
         Cache(int bloques, int vias, int palabras, const char* politicaReemplazo, int cantidadDatosIngresar);
         vector<vector<vector<Datos>>> datosCache;
-        void imprimirCache();
-	void ingresarDirecciones(int direccion);
+        string crearStringCache();
+        int hit;
+        int miss;
+        int cantidadDatosIngresar;
+        void ingresarDirecciones(int direccion);
 
 };
 
